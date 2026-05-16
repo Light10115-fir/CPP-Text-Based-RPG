@@ -28,4 +28,3 @@ int main()
 		Player.hp = Player.hp - damagers[i];
 	}
 }
-
