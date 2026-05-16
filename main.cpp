@@ -18,13 +18,7 @@ class Player // create class for player
 	int damage; // int for damage of creature (if needed)
 }
 // create damage function that can take int and vector of int as damagers / getting damaged
-int damaging()
-(
+
 int main()
 {
-	int damagers[100]; // vector for damagers
-	for(int i = 0; i <= 99; i++)
-	{
-		Player.hp = Player.hp - damagers[i];
-	}
 }
