@@ -8,10 +8,11 @@
 // i realized i have to either set up a .wakatime-project folder or file wtv or a github repo to get hackatime/wakatime to record my project
 // and you KNOW that daddy wants to have a github repo although he's fucking lazy to do it
 // so he'll create a github repo cuz fuck it yolo
+#include "functions.cpp"
 #include <iostream>
 #include <string>
 
-class Player // create class for player
+class Being // create class for player
 {
 	std::string name; // string for name of creature (zombie, player etc)
 	int hp; // int for hitpoints of creature (if needed)
