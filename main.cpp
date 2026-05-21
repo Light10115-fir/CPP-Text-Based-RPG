@@ -11,15 +11,25 @@
 #include "functions.cpp"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <time.h>
 
-class Being // create class for player
+class Being // create class for being
 {
 	std::string name; // string for name of creature (zombie, player etc)
 	int hp; // int for hitpoints of creature (if needed)
 	int damage; // int for damage of creature (if needed)
 }
-// create damage function that can take int and vector of int as damagers / getting damaged
 
 int main()
 {
+	cout << "What would you like to do?  \n Explore   Check inventory    " ;
+	string player.choice;
+	cin >> player.choice;
+	if(player.choice == Explore)
+	{
+		// rand number decides if enemy encounter or not
+		// if yes, rand number decides enemies in enemy encounter
+		// rand number func in functions.cpp
+	}
 }
