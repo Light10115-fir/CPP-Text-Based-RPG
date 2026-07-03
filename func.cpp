@@ -16,13 +16,14 @@ using namespace std;
 	}
 }*/
 
-int randnum(int randomNum)
+int randnum(int number)
 {
+	int randomNum;
 	// Diff number each time program runs cuz its based on the current time (time changes)
 	srand(time(0));
 
 	// Generate a random number between 0 and 3
-	randomNum = rand() % 3;
+	randomNum = rand() % number + 1;
 
-	return 0;
+	return randomNum;
 }

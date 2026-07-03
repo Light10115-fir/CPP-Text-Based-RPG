@@ -15,29 +15,32 @@ class Being // create class for being
 
 int main()
 {
-	cout << "What would you like to do?  \n Explore   Check inventory    " ;
+	cout << "What would you like to do?  \n Explore (1)   Check inventory    " ;
 	string playerChoice;
 	cin >> playerChoice;
-	if(playerChoice == "Explore")
+	if(playerChoice == "Explore" || "1")
 	{
 		// random number decides if the
 		// player encounters an enemy or not
-		randnum();
-
-		// test if function call works
-		cout << randomNum << "\n";
+		int randomNum = randnum(2);
+		
+		bool enemyEncounter;
+		
+		int numberEnemies;
 		if(randomNum == 1)
 		{
 			// player encounters enemy/enemies
-			bool enemy-encounter = true;
+			enemyEncounter = true;
 
 			// number of enemies decided by random number
-			
+			numberEnemies = randnum(20);
 		}
 		else
 		{
 			// player doesnt encounter an enemy/enemies
-			bool enemy-encounter = false;
+			enemyEncounter = false;
 		}
+		// debugging
+		cout << "randomNum: " << randomNum << "\n" << "enemyEncounter" << enemyEncounter << "\n";
 	}
 }
