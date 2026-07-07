@@ -79,7 +79,7 @@ int main()
 		// Start game
 		while(player.hp >0)
 		{
-			cout << "What would you like to do?  \n Explore (1)	Check inventory (2)	Quit (3) \n" ;
+			cout << "What would you like to do?  \n Explore (1)	Check character (2)	Quit (3) \n" ;
 			// Make playerChoice variable
 			string playerChoice = "2";
 			// See what player wants to do
@@ -121,14 +121,23 @@ int main()
 							// zombie takes damage
 							zombie.hp = zombie.hp - fists.damage;
 
-							// tell player the results of their attack
-							cout << "You attacked! Zombie took " << fists.damage << " damage and has " << zombie.hp << " health. \n";
+							
+							
+							if(zombie.hp > 0)
+							{
+								// tell player the results of their attack
+								cout << "You attacked! Zombie took " << fists.damage << " damage and has " << zombie.hp << " health. \n";
+								
+								// player takes damage from zombie attack
+								player.hp = player.hp - zombie.damage;
 
-							// player takes damage from zombie attack
-							player.hp = player.hp - zombie.damage;
-
-							// tell player the results of the zombie's attack
-							cout << "Zombie attacked you! You took " << zombie.damage << " damage and have " << player.hp << " health. \n";
+								// tell player the results of the zombie's attack
+								cout << "Zombie attacked you! You took " << zombie.damage << " damage and have " << player.hp << " health. \n";
+							}
+							else
+							{
+								cout << "Zombie died! \n";
+							}
 						}
 					}
 				}
@@ -137,26 +146,23 @@ int main()
 					// player doesnt encounter an enemy/enemies
 					enemyEncounter = false;
 				}
-				// debugging
-				cout << "randomNum: " << randomNum << "\n" << "enemyEncounter: " << enemyEncounter << "\n";
-				cout << "If logic: " << ifLogic << "\n";
 			}
-			else if (playerChoice == "Check inventory" || playerChoice == "2")
+			else if (playerChoice == "Check character" || playerChoice == "2")
 			{
-				// ifLogic variable is 2
-				ifLogic = 2;
+				// Print inventory
+				cout << "Inventory: \n";
 				for(string i : inventory)
 				{
 					// print each item in inventory
 					cout << i << ' ';
 				}
 				cout << "\n";
-				cout << "If logic: " << ifLogic << "\n";
+				// Print player hp
+				cout << " Player HP: " << player.hp << "\n";
 			}
+			// Quit game
 			else if (playerChoice == "Quit game" || playerChoice == "3")
 			{
-				ifLogic = 3;
-				cout << "If logic: " << ifLogic << "\n Quitting... \n";
 				return 0;
 			}
 		//}
