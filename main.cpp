@@ -3,6 +3,7 @@
 #include <string>
 #include <stdlib.h>
 #include <time.h>
+#include <deque>
 
 using namespace std;
 
@@ -38,8 +39,6 @@ class MiscItems : public Items
 
 int main()
 {
-	// start game
-	//while(true){
 		// Create sword weapon
 		Weapon sword;
 		// Give sword damage value
@@ -59,7 +58,7 @@ int main()
 		// Give bandage heal value
 		bandage.healValue = 7;
 		// Create inventory
-		string inventory[5] = {bandage.name, fists.name};
+		deque<string> inventory = {bandage.name, fists.name};
 		// Create int to sort through inventory
 		int sortInv = sizeof(inventory) / sizeof(inventory[0]);
 		// Create zombie
@@ -85,13 +84,11 @@ int main()
 			// See what player wants to do
 			cin >> playerChoice;
 			// debugging
-			cout << "playerChoice: " << playerChoice << "\n";
+			//cout << "playerChoice: " << playerChoice << "\n";
 			// See if logic compiler chose
 			int ifLogic;
 			if(playerChoice == "Explore" || playerChoice == "1")
 			{
-				// If logic variable is 1
-				ifLogic = 1;
 				// random number decides if the
 				// player encounters an enemy or not
 				int randomNum = randnum(2);
@@ -139,6 +136,20 @@ int main()
 								cout << "Zombie died! \n";
 							}
 						}
+						else if(playerAct == "heal" || playerAct == "2")
+						{
+							if(zombie.hp > 0)
+							{
+								// Heal player
+								player.hp = player.hp + bandage.healValue;
+
+								// Tell player their hp
+								cout << "You used " << bandage.name << " to heal! You have " << player.hp << " health now. \n";
+
+								// Remove bandage from inventory
+								inventory.pop_front();	
+							}
+						}
 					}
 				}
 				else
@@ -163,6 +174,7 @@ int main()
 			// Quit game
 			else if (playerChoice == "Quit game" || playerChoice == "3")
 			{
+				cout << "Quitting... \n";
 				return 0;
 			}
 		//}
