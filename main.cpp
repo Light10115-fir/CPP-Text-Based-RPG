@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <deque>
+#include <vector>
 
 using namespace std;
 
@@ -45,36 +46,37 @@ int main()
 		sword.damage = 5;
 		// Give sword name
 		sword.name = "Sword";
+
 		// Create fists weapon
 		Weapon fists;
 		// Give fists name
 		fists.name = "Fists";
 		// Give fists damage
 		fists.damage = 3;
+
 		// Create bandage item
 		MiscItems bandage;
 		// Give bandage name
 		bandage.name = "Bandage";
 		// Give bandage heal value
 		bandage.healValue = 7;
+
 		// Create inventory
 		deque<string> inventory = {bandage.name, fists.name};
+
 		// Create int to sort through inventory
 		int sortInv = sizeof(inventory) / sizeof(inventory[0]);
-		// Create zombie
-		Being zombie;
-		// Give zombie name
-		zombie.name = "Zombie";
-		// Give zombie HP
-		zombie.hp = 7;
-		// Give zombie damage
-		zombie.damage = 4;
+		
 		// Create player
 		Being player;
 		// Give player name
 		player.name = "Player";
 		// Give player HP
 		player.hp = 10;
+
+		// Check if item is in inv
+		
+
 		// Start game
 		while(player.hp >0)
 		{
@@ -101,18 +103,30 @@ int main()
 				{
 					// player acts
 					string playerAct;
+
 					// number of enemies decided by random number
 					numberEnemies = randnum(20);
 
 					// tell player they encountered enemy
 					// and ask them what they wanna do
 					cout << "You encountered a zombie! \n";
+
+					// Create zombie
+					Being zombie;
+					// Give zombie name
+					zombie.name = "Zombie";
+					// Give zombie HP
+					zombie.hp = 7;
+					// Give zombie damage
+					zombie.damage = 4;
+
 					while(zombie.hp > 0)
 					{
 						cout <<	"What do you wanna do?	attack (1)	heal (2)	block (3) \n";
 			
 						// take playerAct response
 						cin >> playerAct;
+
 						if (playerAct == "attack" || playerAct == "1")
 						{
 							// zombie takes damage
@@ -136,7 +150,7 @@ int main()
 								cout << "Zombie died! \n";
 							}
 						}
-						else if(playerAct == "heal" || playerAct == "2")
+						else if(playerAct == "heal" || playerAct == "2" && )
 						{
 							if(zombie.hp > 0)
 							{

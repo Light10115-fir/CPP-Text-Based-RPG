@@ -16,9 +16,11 @@ using namespace std;
 	}
 }*/
 
+// Function  to generate random number
 int randnum(int number)
 {
 	int randomNum;
+
 	// Diff number each time program runs cuz its based on the current time (time changes)
 	srand(time(0));
 
@@ -27,3 +29,8 @@ int randnum(int number)
 
 	return randomNum;
 }
+
+int findItem(int array, int item)
+{
+	// So close, no matter how far...
+	// (empty function)
