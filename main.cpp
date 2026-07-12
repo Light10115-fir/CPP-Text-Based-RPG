@@ -150,9 +150,15 @@ int main()
 								cout << "Zombie died! \n";
 							}
 						}
-						else if(playerAct == "heal" || playerAct == "2" && )
+						else if(playerAct == "heal" || playerAct == "2")
 						{
-							if(zombie.hp > 0)
+							deque<int>::iterator it = find(inventory.begin, inventory.end, bandage.name);
+							if(it!=inventory.end())
+							{
+								it = numbers.erase(it);
+								cout << "You do not have a bandage! \n";
+							}
+							else if(zombie.hp > 0 )
 							{
 								// Heal player
 								player.hp = player.hp + bandage.healValue;
@@ -163,6 +169,10 @@ int main()
 								// Remove bandage from inventory
 								inventory.pop_front();	
 							}
+							/*else
+							{
+								cout << "You do not have a bandage! \n";
+							}*/
 						}
 					}
 				}
@@ -186,7 +196,7 @@ int main()
 				cout << " Player HP: " << player.hp << "\n";
 			}
 			// Quit game
-			else if (playerChoice == "Quit game" || playerChoice == "3")
+			else if(playerChoice == "Quit game" || playerChoice == "3")
 			{
 				cout << "Quitting... \n";
 				return 0;

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
+#include <deque>
 
 using namespace std;
 
@@ -30,7 +31,26 @@ int randnum(int number)
 	return randomNum;
 }
 
-int findItem(int array, int item)
+// Please work i beg you
+// doesnt work kms
+/*int findItem(int array[], int item, int itemClass)
 {
-	// So close, no matter how far...
-	// (empty function)
+	if(itemClass > 0)
+	{
+		deque<int>::iterator it = find(array.begin(), array.end(), itemClass:item);
+		if(it!=numbers.end())
+		{
+			it = numbers.erase(it);
+		}
+	}
+
+	else if(itemClass < 0)
+	{
+		deque<int>::iterator it = find(array.begin(), array.end(), item);
+		if(it!=numbers.end)
+		{
+			it = numbers.erase(it);
+		}
+	}
+}*/
+		//find(array.begin(), array.end(), itemClass::item)
