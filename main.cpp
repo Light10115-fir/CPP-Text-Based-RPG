@@ -76,7 +76,14 @@ int main()
 
 		// Check if item is in inv
 		
+		int bandageCount = 0;
 
+		for(string bandageName == "Bandage" : inventory[])
+		{
+		bandageCount  = bandageCount + 1;
+		}
+		cout << "bandage count: " << bandageCount << "\n";
+	
 		// Start game
 		while(player.hp >0)
 		{
@@ -120,6 +127,8 @@ int main()
 					// Give zombie damage
 					zombie.damage = 4;
 
+
+
 					while(zombie.hp > 0)
 					{
 						cout <<	"What do you wanna do?	attack (1)	heal (2)	block (3) \n";
@@ -152,13 +161,13 @@ int main()
 						}
 						else if(playerAct == "heal" || playerAct == "2")
 						{
-							deque<int>::iterator it = find(inventory.begin, inventory.end, bandage.name);
+							/*deque<int>::iterator it = find(inventory.begin, inventory.end, bandage.name);
 							if(it!=inventory.end())
 							{
 								it = numbers.erase(it);
 								cout << "You do not have a bandage! \n";
-							}
-							else if(zombie.hp > 0 )
+							}*/
+							else if(zombie.hp > 0 && bandageCount > 0; /*it=inventory.end()*/ )
 							{
 								// Heal player
 								player.hp = player.hp + bandage.healValue;
@@ -167,7 +176,7 @@ int main()
 								cout << "You used " << bandage.name << " to heal! You have " << player.hp << " health now. \n";
 
 								// Remove bandage from inventory
-								inventory.pop_front();	
+								bandageCount = bandageCount -1;	
 							}
 							/*else
 							{
