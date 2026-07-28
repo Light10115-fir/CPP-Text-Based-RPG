@@ -11,10 +11,39 @@ using namespace std;
 
 class Being // create class for beings
 {
+	
+	private:
+		int hp = 0; // int for hitpoints of creature (if needed)
+
 	public:
 		string name; // string for name of creature (zombie, player etc)
-		int hp; // int for hitpoints of creature (if needed)
 		int damage; // int for damage of creature (if needed)
+
+		void modHp(int mod){
+			hp += mod;
+		}
+
+		int getHp(){
+			return this -> hp;
+		}
+
+};
+
+class Player : public Being
+{
+	public:
+		void deathCheck(){
+			if(getHp() <= 0) {
+				cout << "You lost all your health! Game Over!";
+				exit(1);
+			}
+		}
+
+		void modHp(int mod){
+			Being::modHp(mod);
+			deathCheck();
+		}
+
 };
 
 // Create parent Items class
@@ -69,11 +98,11 @@ int main()
 		int sortInv = sizeof(inventory) / sizeof(inventory[0]);
 		
 		// Create player
-		Being player;
+		Player player;
 		// Give player name
 		player.name = "Player";
 		// Give player HP
-		player.hp = 10;
+		player.modHp(10);
 
 		// Check if item is in inv
 		
@@ -88,7 +117,7 @@ int main()
 		cout << "bandage count: " << bandageCount << "\n";
 	
 		// Start game
-		while(player.hp >0)
+		while(player.getHp() >0)
 		{
 			cout << "What would you like to do?  \n Explore (1)	Check character (2)	Quit (3) \n" ;
 			// Make playerChoice variable
@@ -126,13 +155,13 @@ int main()
 					// Give zombie name
 					zombie.name = "Zombie";
 					// Give zombie HP
-					zombie.hp = 7;
+					zombie.modHp(7);
 					// Give zombie damage
 					zombie.damage = 4;
 
 
 
-					while(zombie.hp > 0)
+					while(zombie.getHp() > 0)
 					{
 						cout <<	"What do you wanna do?	attack (1)	heal (2)	block (3) \n";
 			
@@ -142,20 +171,18 @@ int main()
 						if (playerAct == "attack" || playerAct == "1")
 						{
 							// zombie takes damage
-							zombie.hp = zombie.hp - fists.damage;
-
+							zombie.modHp(-fists.damage);
 							
-							
-							if(zombie.hp > 0)
+							if(zombie.getHp() > 0)
 							{
 								// tell player the results of their attack
-								cout << "You attacked! Zombie took " << fists.damage << " damage and has " << zombie.hp << " health. \n";
+								cout << "You attacked! Zombie took " << fists.damage << " damage and has " << zombie.getHp() << " health. \n";
 								
 								// player takes damage from zombie attack
-								player.hp = player.hp - zombie.damage;
+								player.modHp(-zombie.damage);
 
 								// tell player the results of the zombie's attack
-								cout << "Zombie attacked you! You took " << zombie.damage << " damage and have " << player.hp << " health. \n";
+								cout << "Zombie attacked you! You took " << zombie.damage << " damage and have " << player.getHp() << " health. \n";
 							}
 							else
 							{
@@ -168,8 +195,8 @@ int main()
 							if(foundBandage!=inventory.end())
 							{
 								inventory.erase(foundBandage);
-								player.hp = player.hp + bandage.healValue;
-								cout << "You used " << bandage.name << " to heal! You have " << player.hp << " health now. \n";
+								player.modHp(bandage.healValue);
+								cout << "You used " << bandage.name << " to heal! You have " << player.getHp() << " health now. \n";
 							}
 							else cout << "You do not have a bandage! \n";
 						}
@@ -192,7 +219,7 @@ int main()
 				}
 				cout << "\n";
 				// Print player hp
-				cout << " Player HP: " << player.hp << "\n";
+				cout << " Player HP: " << player.getHp() << "\n";
 			}
 			// Quit game
 			else if(playerChoice == "Quit game" || playerChoice == "3")
