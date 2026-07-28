@@ -168,23 +168,10 @@ int main()
 							if(foundBandage!=inventory.end())
 							{
 								inventory.erase(foundBandage);
-								cout << "You do not have a bandage! \n";
-							}
-							else if(zombie.hp > 0 && bandageCount > 0 /*it=inventory.end()*/ )
-							{
-								// Heal player
 								player.hp = player.hp + bandage.healValue;
-
-								// Tell player their hp
 								cout << "You used " << bandage.name << " to heal! You have " << player.hp << " health now. \n";
-
-								// Remove bandage from inventory
-								bandageCount = bandageCount -1;	
 							}
-							/*else
-							{
-								cout << "You do not have a bandage! \n";
-							}*/
+							else cout << "You do not have a bandage! \n";
 						}
 					}
 				}
