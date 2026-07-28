@@ -5,6 +5,7 @@
 #include <time.h>
 #include <deque>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -78,9 +79,11 @@ int main()
 		
 		int bandageCount = 0;
 
-		for(string bandageName == "Bandage" : inventory[])
+		for(string bandageName : inventory)
 		{
-		bandageCount  = bandageCount + 1;
+			if(bandageName == "Bandage"){
+				bandageCount  = bandageCount + 1;
+			}
 		}
 		cout << "bandage count: " << bandageCount << "\n";
 	
@@ -161,13 +164,13 @@ int main()
 						}
 						else if(playerAct == "heal" || playerAct == "2")
 						{
-							/*deque<int>::iterator it = find(inventory.begin, inventory.end, bandage.name);
-							if(it!=inventory.end())
+							auto foundBandage = find(inventory.begin(), inventory.end(), bandage.name);
+							if(foundBandage!=inventory.end())
 							{
-								it = numbers.erase(it);
+								inventory.erase(foundBandage);
 								cout << "You do not have a bandage! \n";
-							}*/
-							else if(zombie.hp > 0 && bandageCount > 0; /*it=inventory.end()*/ )
+							}
+							else if(zombie.hp > 0 && bandageCount > 0 /*it=inventory.end()*/ )
 							{
 								// Heal player
 								player.hp = player.hp + bandage.healValue;
