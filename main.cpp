@@ -34,7 +34,7 @@ class Player : public Being
 	public:
 		void deathCheck(){
 			if(getHp() <= 0) {
-				cout << "You lost all your health! Game Over!";
+				cout << "You died."; // elden ring type shit
 				exit(1);
 			}
 		}
